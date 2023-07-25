@@ -4,14 +4,15 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { BikeProps } from '@/types'
 import CustomButton from './CustomButton'
-import { calculateBikeRent } from '@/utils'
+import { calculateBikeRent, generateBikeImageUrl } from '@/utils'
 import { HEROBIKE, rightarrow } from '@/public'
+import BikeDetails from './BikeDetails'
 
 interface BikeCardProps {
     bike: BikeProps;
 }
 
-const BikeCard = ({bike}: BikeCardProps) => {
+const BikeCard = ({ bike }: BikeCardProps) => {
 
     const {city_mpg, year, make, model, transmission, drive } = bike;
     const bikeRent = calculateBikeRent(city_mpg, year);
@@ -36,7 +37,7 @@ const BikeCard = ({bike}: BikeCardProps) => {
             </span>
         </p>
         <div className='relative w-full h-40 my-3 object-contain'>
-            <Image src={HEROBIKE} alt='producto' fill priority
+            <Image src={generateBikeImageUrl(bike)} alt='producto' fill priority
             className='object-contain'/>
         </div>
         <div className='relative flex w-full mt-2'>
@@ -66,11 +67,11 @@ const BikeCard = ({bike}: BikeCardProps) => {
                 containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
                 textStyle='text-white text-[14px] leading-[18px] font-bold'
                 rightIcon={rightarrow}
-                handleClick={()=> setIsOpen(true)}
+                handleClick={() => setIsOpen(true)}
                 />
             </div>
         </div>
-        
+        <BikeDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} bike={bike}/>
     </div>
   )
 }
