@@ -17,7 +17,7 @@
 }
 
 .padding-x {
-  @apply sm:px-16 px-6;
+  @apply sm:px-10 px-6;
 }
 
 .padding-y {
@@ -39,23 +39,23 @@
 
 /* START: Hero styles */
 .hero {
-  @apply flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1440px] mx-auto;
+  @apply flex xl:flex-col flex-col gap-12 relative z-0 max-w-[1440px] xl:mx-auto  -mx-20;
 }
 
-.hero__title {
-  @apply 2xl:text-[72px] sm:text-[64px] text-[50px] font-extrabold;
+.title-hero {
+  @apply 2xl:text-[68px] sm:text-[64px] text-[50px] font-extrabold text-black-100 text-center;
 }
 
 .hero__subtitle {
-  @apply text-[27px] text-black font-light mt-5;
+  @apply text-[27px] text-black-100  font-light mt-5 text-center text-black-100  mt-4;
 }
 
 .hero__image-container {
-  @apply xl:flex-[1.5] flex justify-end items-end w-full xl:h-screen;
+  @apply xl:flex flex-col  flex justify-end items-end w-full xl:h-[400px] h-[200px] px-2;
 }
 
 .hero__image {
-  @apply relative xl:w-full w-[90%] xl:h-full h-[590px] z-0;
+  @apply relative xl:w-full w-[100%] xl:h-full h-[590px] z-0;
 }
 
 .hero__image-overlay {
@@ -65,20 +65,20 @@
 
 /* START: Home styles */
 
-.home__text-container {
-  @apply flex flex-col items-start justify-start gap-y-2.5 text-black-100;
+.subtitle__text-container {
+  @apply flex flex-col items-center justify-center text-center gap-y-2.5 text-black ;
 }
 
-.home__filters {
-  @apply mt-12 w-full flex-between items-center flex-wrap gap-5;
+.filtros-autos {
+  @apply xl:mt-12 mt-4 w-full flex-between items-center flex-wrap gap-5 text-center py-12;
 }
 
 .home__filter-container {
-  @apply flex justify-start flex-wrap items-center gap-2;
+  @apply flex justify-start flex-wrap items-center gap-2 justify-center ;
 }
 
-.home__cars-wrapper {
-  @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14;
+.div-container-cards {
+  @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-12 max-w-full;
 }
 
 .home__error-container {
@@ -86,20 +86,25 @@
 }
 /* END: Home styles */
 
+
+
+
+
+
 /* START: Car Card styles */
-.car-card {
-  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+.card {
+  @apply flex flex-col p-6 justify-center items-center text-black bg-gray-100 hover:scale-105 hover:shadow-md rounded-3xl;
 }
 
 .car-card__content {
-  @apply w-full flex justify-between items-start gap-2;
+  @apply w-full flex justify-center items-start gap-2;
 }
 
-.car-card__content-title {
-  @apply text-[22px] leading-[26px] font-bold capitalize;
+.titulo-card {
+  @apply text-[22px] leading-[26px] font-bold capitalize text-center;
 }
 
-.car-card__price {
+.precio-auto {
   @apply flex mt-6 text-[32px] leading-[38px] font-extrabold;
 }
 
@@ -132,6 +137,12 @@
 }
 /* END: Car Card styles */
 
+
+
+
+
+
+
 /* START: Car Details styles */
 .car-details__dialog-panel {
   @apply relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex flex-col gap-5;
@@ -146,6 +157,10 @@
 }
 /* END: Car Details styles */
 
+
+
+
+
 /* START: Custom Filter styles */
 .custom-filter__btn {
   @apply relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-white py-2 px-3 text-left shadow-md sm:text-sm border;
@@ -155,6 +170,10 @@
   @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
 }
 /* END: Custom Filter styles */
+
+
+
+
 
 /* START: Footer styles */
 .footer {
@@ -169,8 +188,8 @@
   @apply flex flex-col justify-start items-start gap-6;
 }
 
-.footer__links {
-  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
+.links-footer {
+  @apply flex-1 w-full xl:flex md:flex md:flex-wrap  md:justify-end xl:flex-wrap max-md:mt-10 gap-20 hidden xl:block md:block md:justify-end;
 }
 
 .footer__link {
@@ -181,24 +200,30 @@
   @apply flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10;
 }
 
-.footer__copyrights-link {
+.copyrights-links {
   @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
 }
 /* END: Footer styles */
 
+
+
+
 /* START: searchbar styles */
 .searchbar {
-  @apply flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl;
+  @apply flex items-center xl:justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl justify-center;
 }
 
 .searchbar__item {
-  @apply flex-1 max-sm:w-full flex justify-start items-center relative;
+  @apply flex-1 max-sm:w-full flex justify-start items-center relative ;
 }
 
 .searchbar__input {
-  @apply w-full h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm;
+  @apply w-full h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm text-black;
 }
 /* END: searchbar styles */
+
+
+
 
 /* START: search manufacturer styles */
 .search-manufacturer {

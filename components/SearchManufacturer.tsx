@@ -1,11 +1,11 @@
 'use client'
-import { SearchManufacturerProps } from '@/types'
+import { SearchManuFacturerProps } from '@/types';
 import { useState, Fragment} from 'react'
 import { Combobox, Transition } from '@headlessui/react'
 import {manufacturers} from '@/constants';
-import { bikelogo } from '@/public'
+import { carlogo } from '@/public'
 import Image from 'next/image'
-const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturerProps) => {
+const SearchManufacturer = ({manufacturer, setManuFacturer} : SearchManuFacturerProps) => {
     const [query, setQuery] = useState('');
 
 
@@ -19,18 +19,18 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
 
   return (
     <div className='search-manufacturer'>
-        <Combobox value={manufacturer} onChange={setManufacturer}>
+        <Combobox value={manufacturer} onChange={setManuFacturer}>
             <div className='relative w-full'>
                 <Combobox.Button className='absolute top-[14px]'>
                     <Image
-                    src={bikelogo}
+                    src={carlogo}
                     width={22}
                     height={22}
                     className='ml-4'
                     alt='car-logo'/>
                 </Combobox.Button>
                 <Combobox.Input className='search-manufacturer__input'
-                placeholder='Specialized'
+                placeholder='VolksWagen'
                 displayValue={(manufacturer: string) => manufacturer}
                 onChange={(e) => setQuery (e.target.value)}/>
                 

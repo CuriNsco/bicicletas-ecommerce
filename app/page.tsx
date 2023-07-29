@@ -1,38 +1,51 @@
-import { Hero, CustomFilter,Searchbar,BikeCard } from "@/components"
+import { Hero, CustomFilter,Searchbar,BikeCard, ShowMore } from "@/components"
 import { fetchBikes } from "@/utils"
+import { HomeProps } from "@/types";
+import { fuels, yearsOfProduction } from "@/constants";
 
-export default async function Home() {
+export default async function Home({ searchParams }: HomeProps) {
 
-  const allBikes = await fetchBikes();
+  const allBikes = await fetchBikes({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year || 2023,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit  || 10,
+    model: searchParams.model || "",
+  });
   const isDataEmpty = !Array.isArray(allBikes) || allBikes.length <1 || !allBikes;
 
+
   return (
-    <main className="overflow-hidden">
+    <div className="overflow-hidden bg-[#ffffff] px-20">
       <Hero/>
       <div className="mt-12 padding-x padding-y max-width" id="discorver">
-        <div className="home__text-container">
-        <h1 className="text-4xl font-extrabold"> Bike catalogue</h1>
-        <p>Explore the bikes you might like</p>
+        <div className="subtitle__text-container">
+        <h1 className="text-5xl font-extrabold"> Cars catalogue</h1>
         </div>
-        <div className="home__filters">
+        <div className="filtros-autos">
           <Searchbar/>
-          <div className="home__filter-container">
-            {/* <CustomFilter title='road'/>
-            <CustomFilter title='year'/> */}
-
+          <div className='home__filter-container'>
+            <CustomFilter title='fuel' options={fuels} />
+            <CustomFilter title='year' options={yearsOfProduction} />
           </div>
+        </div>
         </div>
 
 
             {!isDataEmpty ? (
               <section>
-                <div className="home__cars-wrapper">
+                <div className="div-container-cards">
 
                   {allBikes?.map((bike) => (
                     <BikeCard bike={bike}/>
                   ))}
 
                 </div>
+
+                <ShowMore 
+                pageNumber={(searchParams.limit || 10)/ 10}
+                isNext={(searchParams.limit || 10)> allBikes.length}/>
+
               </section>
             ): (
               <div className="home__error-container">
@@ -40,8 +53,6 @@ export default async function Home() {
                 <p>{allBikes?.message}</p>
               </div>
             )}
-      
       </div>
-    </main>
   )
 }

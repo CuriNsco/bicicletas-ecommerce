@@ -1,25 +1,25 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { logo } from '@/public'
+import { logocar } from '@/public'
 import { footerLinks } from '@/constants'
 
 const Footer = () => {
   return (
    <footer className='flex flex-col text-black mt-5 border-t border-gray-100'>
     <div className='flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10'>
-        <div className='flex flex-col justify-start items-start gap-6'>
-            <Image src={logo}
+        <div className='flex flex-col justify-start items-center gap-6'>
+            <Image src={logocar}
              alt='Bike store logo'
              width={118}
              height={18}
              className='object-contain'/>
-             <p className='text-base text-gray-700'>
-                Bike Store 2023 <br/>
+             <p className='text-base text-gray-700 text-center'>
+                Car Shop 2023 <br/>
                 All rights reserved &copy;
              </p>
         </div>
-        <div className="footer__links">
+        <div className="links-footer">
             {footerLinks.map((link) =>(
                 <div key={link.title} className='footer__link'>
                     <h3 className='font-bold'>{link.title}</h3>
@@ -32,9 +32,9 @@ const Footer = () => {
             ))}
         </div>
         </div>
-        <div className='flex flex-wrap justify-between items-center   mt-10 border-t border-gray-100 sm:px-16 px-6 py-10'>
+        <div className='flex flex-wrap justify-center items-center  mt-10 border-t border-gray-100 sm:px-16 px-6 py-10'>
             <p>@2023 Bike Store. All Rigths Reserved</p>
-            <div className='footer__copyrights-link'>
+            <div className='copyrights-links'>
                 <Link
                 href='/'
                 className='text-gray-500'>

@@ -40,7 +40,7 @@ const Searchbar = () => {
       }else {
         searchParams.delete('model')
       }
-      if(model){
+      if(manufacturer){
         searchParams.set('manufacturer', manufacturer)
       }else {
         searchParams.delete('manufacturer')
@@ -53,10 +53,10 @@ const Searchbar = () => {
 
   return (
     <form className='searchbar' onSubmit={handleSearch}>
-        <div className="searchbar__item">
+        <div className="searchbar__item xl:mr-12 ">
             <SearchManufacturer
             manufacturer = {manufacturer}
-            setManufacturer = {setManufacturer}
+            setManuFacturer = {setManufacturer}
             />
             <SearchButton otherClasses='sm:hidden'/>
         </div>
@@ -72,7 +72,7 @@ const Searchbar = () => {
             name="model"
             value={model}
             onChange={(e) => setModel(e.target.value)}
-            placeholder="Corolla"
+            placeholder="Astra"
             className="searchbar__input"/>
             <SearchButton otherClasses="sm:hidden"/>
         </div>

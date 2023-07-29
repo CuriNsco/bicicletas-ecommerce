@@ -1,12 +1,17 @@
-import { BikeProps } from "@/types";
+import { BikeProps, FiltroProps} from "@/types";
 
-export async function fetchBikes(){
+export async function fetchBikes(filtro: FiltroProps) {
+  const {manufacturer, year, model, limit, fuel } = filtro;
     const headers = {
 		'X-RapidAPI-Key': '114fdb6628mshfb399183b823d9ap1e2551jsne17530a47cdc',
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 	}
-    const response = await fetch ('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q5',{ headers: headers,});
-
+    const response = await fetch(
+      `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+      {
+        headers: headers,
+      }
+    );
     const result = await response.json();
 
     return result;
@@ -14,18 +19,29 @@ export async function fetchBikes(){
 
 
 export const calculateBikeRent = (city_mpg: number, year: number) => {
-    const basePricePerDay = 50; // Base rental price per day in dollars
-    const mileageFactor = 0.1; // Additional rate per mile driven
-    const ageFactor = 0.05; // Additional rate per year of vehicle age
+    const basePriceCar = 15000;
+    return basePriceCar.toFixed(0);
+  };
+
+  export const updateSearchParams = (type: string, value: string) => {
+
+    const searchParams = new URLSearchParams(window.location.search);
   
-    // Calculate additional rate based on mileage and age
-    const mileageRate = city_mpg * mileageFactor;
-    const ageRate = (new Date().getFullYear() - year) * ageFactor;
+    searchParams.set(type, value);
+
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+    return newPathname;
+  };
+
+  export const deleteSearchParams = (type: string) => {
+
+    const newSearchParams = new URLSearchParams(window.location.search);
   
-    // Calculate total rental rate per day
-    const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
+    newSearchParams.delete(type.toLocaleLowerCase());
   
-    return rentalRatePerDay.toFixed(0);
+    const newPathname = `${window.location.pathname}?${newSearchParams.toString()}`;
+  
+    return newPathname;
   };
 
 
